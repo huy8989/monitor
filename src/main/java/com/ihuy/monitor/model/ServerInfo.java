@@ -38,15 +38,15 @@ public class ServerInfo {
 	private NetInfo netInfo;
 
 	/**
-	 * CPU占用率(单位：%) cpu usage=[(user_2 +sys_2+nice_2) - (user_1 +
-	 * sys_1+nice_1)]/(total_2 - total_1)*100
+	 * CPU占用率 cpu usage=[(user_2 +sys_2+nice_2) - (user_1 +
+	 * sys_1+nice_1)]/(total_2 - total_1)
 	 * */
-	private int cPURate;
+	private float cPURate;
 
 	/**
 	 * 网络负载参数 平均网络负载 = ((输出的数据包2+流入的数据包2)-(输出的数据包1+流入的数据包1)) / t
 	 * */
-	private int netLoad;
+	private float netLoad;
 
 	/**
 	 * 内存占用率(单位：%) 内存使用百分比 = 100 * (cmem / umem)
@@ -96,19 +96,19 @@ public class ServerInfo {
 		this.time = time;
 	}
 
-	public int getcPURate() {
+	public float getcPURate() {
 		return cPURate;
 	}
 
-	public void setcPURate(int cPURate) {
+	public void setcPURate(float cPURate) {
 		this.cPURate = cPURate;
 	}
 
-	public int getNetLoad() {
+	public float getNetLoad() {
 		return netLoad;
 	}
 
-	public void setNetLoad(int netLoad) {
+	public void setNetLoad(float netLoad) {
 		this.netLoad = netLoad;
 	}
 

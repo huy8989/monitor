@@ -13,8 +13,6 @@
 
 package com.ihuy.monitor.model;
 
-import java.sql.Time;
-
 /**
  * ClassName:ServerInfo 服务器负载信息
  * 

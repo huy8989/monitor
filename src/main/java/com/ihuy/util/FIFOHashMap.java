@@ -26,9 +26,10 @@ import java.util.Map;
  * 
  * @see
  */
+
 public class FIFOHashMap extends LinkedHashMap {
 
-	/**缓存器最大容量*/
+	/** 缓存器最大容量 */
 	private static final int SIZE = 100;
 
 	protected boolean removeEldestEntry(Map.Entry eldest) {

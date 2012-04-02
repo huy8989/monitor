@@ -1,12 +1,12 @@
 /**
- * GeneralController.java
+ * VelocityController.java
  * com.ihuy.monitor.controller
  *
  * Function： TODO 
  *
  *   ver     date      		author
  * ──────────────────────────────────
- *   		 2012-3-29 		huy
+ *   		 2012-4-2 		huy
  *
  * Copyright (c) 2012, TNT All Rights Reserved.
  */
@@ -17,34 +17,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ihuy.monitor.dao.ExampleDAO;
-
 /**
- * ClassName:GeneralController Function: TODO ADD FUNCTION Reason: TODO ADD
+ * ClassName:VelocityController Function: TODO ADD FUNCTION Reason: TODO ADD
  * REASON
  * 
  * @author huy
  * @version
  * @since Ver 1.1
- * @Date 2012-3-29 上午9:53:24
+ * @Date 2012-4-2 下午4:36:39
  * 
+ * @see
  */
 @Controller
-public class GeneralController {
+public class VelocityController {
 
-	private ExampleDAO exampleDAO;
-
-	public ExampleDAO getExampleDAO() {
-		return exampleDAO;
-	}
-
-	public void setExampleDAO(ExampleDAO exampleDAO) {
-		this.exampleDAO = exampleDAO;
-	}
-
-	@RequestMapping(value = "index.do")
+	@RequestMapping(value = "velocity.do")
 	public void index_jsp(Model model) {
 		model.addAttribute("liming", "黎明你好");
-		model.addAttribute("name", exampleDAO.getExampleName(1));
+		System.out.println("hello");
 	}
 }

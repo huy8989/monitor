@@ -11,8 +11,9 @@
 	</context-param>
 
 	<!-- Spring的log4j监听器 -->
-	<!-- <listener> <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> 
-		</listener> -->
+	<!-- <listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener> -->
 
 	<!-- 字符集 过滤器 -->
 	<filter>

@@ -17,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ihuy.monitor.dao.ExampleDAO;
+
 /**
  * ClassName:GeneralController Function: TODO ADD FUNCTION Reason: TODO ADD
  * REASON
@@ -30,9 +32,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class GeneralController {
 
+	private ExampleDAO exampleDAO;
+
+	public ExampleDAO getExampleDAO() {
+		return exampleDAO;
+	}
+
+	public void setExampleDAO(ExampleDAO exampleDAO) {
+		this.exampleDAO = exampleDAO;
+	}
+
 	@RequestMapping(value = "index.do")
 	public void index_jsp(Model model) {
 		model.addAttribute("liming", "黎明你好");
+		model.addAttribute("name", exampleDAO.getExampleName(1));
 		System.out.println("index.jsp");
 	}
 }

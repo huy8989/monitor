@@ -13,6 +13,8 @@
 
 package com.ihuy.monitor.model;
 
+import java.util.Date;
+
 /**
  * ClassName:ServerInfo 服务器负载信息
  * 
@@ -54,7 +56,7 @@ public class ServerInfo {
 	private int memRate;
 
 	/** 此刻服务器时间 */
-	private long time;
+	private Date time;
 
 	public boolean isFirst() {
 		return isFirst;
@@ -88,11 +90,11 @@ public class ServerInfo {
 		this.netInfo = netInfo;
 	}
 
-	public long getTime() {
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(long time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 

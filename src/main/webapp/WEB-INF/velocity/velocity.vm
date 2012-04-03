@@ -23,7 +23,12 @@
 		dimensions (otherwise the plot library will barf) and call the plot
 		function with the data. The axes are automatically scaled.</p>
 
-	
+	#foreach($serverInfo in $serverInfos)
+		$serverInfo.cPURate </br>
+		$serverInfo.memRate	</br>
+		$serverInfo.netLoad </br>
+		$serverInfo.time </br>
+	#end
 
 </body>
 </html>

@@ -14,6 +14,7 @@
 package com.ihuy.monitor.service;
 
 import java.io.IOException;
+import java.util.Date;
 
 import com.ihuy.monitor.constants.Constants;
 import com.ihuy.monitor.model.CPUInfo;
@@ -39,7 +40,7 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 
 		ServerInfo serverInfo = new ServerInfo();
 
-		serverInfo.setTime(System.currentTimeMillis());
+		serverInfo.setTime(new Date());
 
 		// 获取CPU信息
 		CPUInfo cpuInfo = CPUInfoServiceImpl.getCPUInfo();
@@ -63,8 +64,8 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 			serverInfo.setcPURate(getCPURate(cpuInfo,
 					preServerInfo.getcPUInfo()));
 			serverInfo.setNetLoad(getNetLoad(netInfo,
-					preServerInfo.getNetInfo(), serverInfo.getTime()
-							- preServerInfo.getTime()));
+					preServerInfo.getNetInfo(), serverInfo.getTime().getTime()
+							- preServerInfo.getTime().getTime()));
 		}
 
 		serverInfo.setcPUInfo(cpuInfo);
@@ -73,7 +74,10 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 		serverInfo.setMemRate(getMemRate(memInfo.getMemTotal(),
 				memInfo.getMemFree()));
 
-		return null;
+		// 更新CPU cache
+		SimpleCache.put(Constants.PRE_SERVER_INFO, serverInfo);
+
+		return serverInfo;
 
 	}
 
@@ -119,10 +123,10 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 				+ cpuInfo.getNice() + cpuInfo.getIdle();
 		int preCpuTotal = preCpuInfo.getUser() + preCpuInfo.getSystem()
 				+ preCpuInfo.getNice() + preCpuInfo.getIdle();
-
-		return ((float) ((cpuInfo.getUser() + cpuInfo.getSystem() + cpuInfo
+		float rate = (float) ((float) ((cpuInfo.getUser() + cpuInfo.getSystem() + cpuInfo
 				.getNice()) - (preCpuInfo.getUser() + preCpuInfo.getSystem() + preCpuInfo
 				.getNice())) / (float) (cpuTotal - preCpuTotal));
+		return rate;
 
 	}
 

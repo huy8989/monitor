@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
      "http://www.ibatis.com/dtd/sql-map-2.dtd">
-<sqlMap namespace="serverInfo" >
-
-<resultMap id="serverResult" class="com.ihuy.monitor.model.ServerInfo">
+<sqlMap namespace="serverInfo">
 
 
+	<insert id="serverInsert" parameterClass="com.ihuy.monitor.model.ServerInfo">
+		insert into serverInfo(
+		cpu_rate,
+		mem_rate,
+		net_load,
+		time
+		)values(
+		#cPURate#,
+		#memRate#,
+		#netLoad#,
+		#time#
+		)
 
-</resultMap>
+	</insert>
+	<resultMap id="serverInfo" class="com.ihuy.monitor.model.ServerInfo">
+		<result property="cPURate" column="cpu_rate" />
+		<result property="netLoad" column="net_load" />
+		<result property="memRate" column="mem_rate" />
+		<result property="time" column="time" />
+	</resultMap>
+
+	<select id="getServerInfosBytime" resultMap="serverInfo"
+		parameterClass="map">
+	<![CDATA[
+	select cpu_rate,net_load,mem_rate,time from serverInfo where time>=#begin# and time<=#end#;
+	]]>
+	</select>
+
 
 </sqlMap>
